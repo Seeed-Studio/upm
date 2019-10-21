@@ -106,6 +106,7 @@ if(NOT ${found})
     else() #debian based assumed, install to the dist-packages.
       set(_packages_path "python${_version_major_minor}/dist-packages")
     endif()
+    string(REGEX REPLACE ".*(python[0-9.]+/.*)$" "\\1" _packages_path ${_std_packages_path})
       if(EXISTS "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/${${packages_path}}")
         set(_packages_path "lib${LIB_SUFFIX}/${_packages_path}")
       else()
